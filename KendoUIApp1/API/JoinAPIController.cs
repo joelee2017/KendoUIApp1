@@ -1,4 +1,6 @@
-﻿using KendoUIApp1.Models;
+﻿using Kendo.Mvc.Extensions;
+using Kendo.Mvc.UI;
+using KendoUIApp1.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,5 +57,25 @@ namespace KendoUIApp1.API
 
             return db.test1;
         }
+
+        [HttpGet] //以下方法只為了將資料放到Kendo之中
+        public DataSourceResult Test_GetAll([System.Web.Http.ModelBinding.ModelBinder(typeof(WebApiDataSourceRequestModelBinder))]DataSourceRequest request)
+        {
+            return db.test1.ToDataSourceResult(request);
+        }
+
+        [HttpPost]
+        public void Create(test1 Test)
+        {
+            var entity = new test1
+            {
+                ID = Test.ID,
+                name = Test.name,
+                dept = Test.dept
+            };
+            db.test1.Add(entity);
+            db.SaveChanges();
+        }
+
     }
 }
