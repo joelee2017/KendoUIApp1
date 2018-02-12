@@ -11,7 +11,7 @@
         }
 
         /* Sticky footer styles
-    -------------------------------------------------- */
+        -------------------------------------------------- */
         html {
             position: relative;
             min-height: 100%;
@@ -89,59 +89,83 @@
                 font-weight: lighter;
             }
         }
+
+        #responsive-panel {
+            max-width: 100%;
+            margin: 30px auto;
+            height: 400px;        
+        }
+        #menu{
+            position:absolute;
+            /*z-index:5555;*/
+        }
     </style>
-	<link href="@Url.Content("~/Content/kendo/2015.1.429/kendo.common-material.min.css")" rel="stylesheet" type="text/css" />
-	<link href="@Url.Content("~/Content/kendo/2015.1.429/kendo.mobile.all.min.css")" rel="stylesheet" type="text/css" />
-	<link href="@Url.Content("~/Content/kendo/2015.1.429/kendo.material.min.css")" rel="stylesheet" type="text/css" />
-	<script src="@Url.Content("~/Scripts/kendo/2015.1.429/jquery.min.js")"></script>
-	<script src="@Url.Content("~/Scripts/kendo/2015.1.429/angular.min.js")"></script>
-	<script src="@Url.Content("~/Scripts/kendo/2015.1.429/jszip.min.js")"></script>
-	<script src="@Url.Content("~/Scripts/kendo/2015.1.429/kendo.all.min.js")"></script>
+    <link href="@Url.Content("~/Content/kendo/2015.1.429/kendo.common-material.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2015.1.429/kendo.mobile.all.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/kendo/2015.1.429/kendo.material.min.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/kendo/2015.1.429/jquery.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2015.1.429/angular.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2015.1.429/jszip.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/kendo/2015.1.429/kendo.all.min.js")"></script>
 </head>
 <body>
-    <div class="container-fluid">
-        <div class="row k-header">
-            <h1>Project Title</h1>
+    <div class="row">
+        <div class="demo-section k-content">
+            <img src="~/Images/Logo_嘉里大榮.png" />
             <div id="responsive-panel">
-                <ul id="menu">
-                    <li>Item 1
-                    </li>
-                    <li>Item 2
-                    </li>
-                    <li>Item 3
-                    </li>
-                    <li>Item 4
-                    </li>
-                    <li>Item 5
-                    </li>
-                    <li disabled="disabled">Disabled Item
-                    </li>
-                </ul>
+                <div class="row" >
+                    <ul id="menu">
+                        <li>
+                            主控台
+                            <ul>
+                                <li>
+                                    Furniture
+                                    <ul>
+                                        <li>Tables & Chairs</li>
+                                        <li>Sofas</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    Decor
+                                    <ul>
+                                        <li>Bed Linen</li>
+                                        <li>Throws</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            資料列表
+                        </li>
+                        <li>
+                            新增任務
+                        </li>
+                        <li>
+                            調度總表
+                        </li>
+                        <li>
+                            系統管理
+                        </li>
+                    </ul>
+                </div>
             </div>
             <button id="configure" class="k-rpanel-toggle k-button k-primary btn-toggle"><span class="k-icon k-i-hbars"></span></button>
         </div>
-    </div>
-
-    @RenderBody()
-
-
-    <div class="container-fluid">
+        @RenderBody()
         <div class="row">
             <div class="col-xs-18 col-md-12">
                 <div id="grid"></div>
             </div>
         </div>
-    </div>
-
-    <footer class="footer">
-        <div class="container-fluid">
+        <footer class="footer">
             <p class="text-muted">Copyright © 2002-2015 Telerik. All rights reserved.</p>
-        </div>
-    </footer>
-
+        </footer>
+    </div>
     <script>
         $(document).ready(function () {
             $("#menu").kendoMenu();
+
+
 
             $("#responsive-panel").kendoResponsivePanel({
                 breakpoint: 768,
@@ -153,5 +177,6 @@
             $("#responsive-panel").getKendoResponsivePanel().toggle();
         }
     </script>
+    @RenderSection("scripts", false)
 </body>
 </html>

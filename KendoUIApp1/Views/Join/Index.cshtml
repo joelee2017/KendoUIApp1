@@ -13,11 +13,22 @@
                     transport: {
                         read: {
                             url:"/api/JoinAPI/Test_GetAll"
-                        }, create: {
+                        },
+                        create: {
                             type: "post",
                             url: "/api/JoinAPI/Create",
                             complete: function (e) { $("#grid").data("kendoGrid").dataSource.read();}
-                        }
+                        },
+                        update: {
+                            type: "post",
+                            url: "/api/JoinAPI/Edit",
+                            complete: function (e) { $("#grid").data("kendoGrid").dataSource.read(); }
+                        },
+                        destroy: {
+                            type: "post",
+                            url: "/api/JoinAPI/Delete",
+                            complete: function (e) { $("#grid").data("kendoGrid").dataSource.read(); }
+                        },
                     },
                     schema:
                     {
@@ -44,15 +55,13 @@
                     refresh: true,
                     pageSizes: true,                       
                 },
-                columns:[{
-                    field: "name",
-                    title: "名字"
-                    },
-                    {
-                    field: "dept",
-                    title: "部門"
-                }]
-                , toolbar: [{name:"create",text:"新增一筆資料"}]
+                toolbar: [{ name: "create", text: "新增一筆資料"}],
+                columns: [
+                    { field: "name", title: "名字" },
+                    { field: "dept", title: "部門" },
+                    { command: ["edit","destroy"],title:"&nbsp;",width:"300px"}
+                ],
+                editable: "inline"        
             });
         });
     </script>

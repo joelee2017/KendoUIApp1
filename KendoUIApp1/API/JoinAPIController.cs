@@ -34,13 +34,14 @@ namespace KendoUIApp1.API
             return db.test1;
         }
 
+
         [HttpGet]
-        public IEnumerable<test1>EditAll(int id)
+        public IEnumerable<test1>EditAll(int id,string userNmae,string password)
         {
             test1 t1 = db.test1.Find(id);
 
-            t1.name = "wait10";
-            t1.dept = "wait10";
+            t1.name = userNmae;
+            t1.dept = password;
             
             db.SaveChanges();
 
@@ -77,5 +78,24 @@ namespace KendoUIApp1.API
             db.SaveChanges();
         }
 
+        [HttpPost]
+        public void Edit(test1 Test)
+        {
+            var up = db.test1.Find(Test.ID);
+
+            up.name = Test.name;
+            up.dept = Test.dept;
+
+            db.Entry(up).State = System.Data.Entity.EntityState.Modified;
+            db.SaveChanges();
+        }
+
+       [HttpPost]
+       public void Delete(test1 Test)
+        {
+            var de = db.test1.Find(Test.ID);
+            db.test1.Remove(de);
+            db.SaveChanges();
+        }
     }
 }

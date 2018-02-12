@@ -14,6 +14,7 @@ namespace KendoUIApp1
         protected void Application_Start()
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);//註冊API在專案跑，加入WebAPI服務.dll檔
+
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
