@@ -12,10 +12,49 @@
                 type: "webapi",
                 transport: {
                     read: {
-                        url:"/api/Route/Route_Get"
+                        url: "/api/Route/Route_Get"
                     },
-                }
-            }
+                },
+                schema:
+                {
+                    data: "Data",
+                    total: "Total",
+                    model: {
+                        id: "RouteID",
+                        fields: {
+                            CustomerID: { type: "string" },
+                            RouteName: { type: "string" },
+                            FixedPrice: { type: "number" },
+                            KgPrice: { type: "number" },
+                            PalletPrice: { type: "number" },
+                            TripPrice: {type:"number"}
+                        }
+                    }
+                    
+                },
+                pageSize:20
+            },
+            height: 550,
+            groupable: true,
+            sortable: true,
+            editable: {
+                mode:"popup"
+            },
+            pageable: {
+                refresh: true,
+                pageSizes:true,
+            },
+            toolbar: [{ name: "create", text: "新增一筆資料" }],
+            columns: [
+                { field: "CustomerID", title: "客戶編號" },
+                { field: "RouteName", title: "線別名稱" },
+                { field: "FixedPrice", title: "線別固定價格" },
+                { field: "KgPrice", title: "公斤-價格" },
+                { field: "PalletPrice", title: "板數-價格" },
+                { field: "TripPrice", title: "車趟-價格" },
+                {command:["edit","destroy"],title:"&nbsp;",width:"300px"}
+            ],
+            editable:"inline"
         });
     });
 </script>
