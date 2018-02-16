@@ -13,7 +13,7 @@ namespace KendoUIApp1
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{Action}/{id}",
+                routeTemplate: "api/{controller}/{Action}",
                 defaults: new { id = RouteParameter.Optional }
             );
         }

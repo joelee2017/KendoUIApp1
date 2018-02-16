@@ -54,6 +54,12 @@
       <HintPath>C:\Program Files (x86)\Telerik\UI for ASP.NET MVC Q1 2015\wrappers\aspnetmvc\Binaries\Mvc5\Kendo.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Data.Edm, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.Edm.5.6.0\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Data.OData.5.6.0\lib\net40\Microsoft.Data.OData.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
@@ -69,6 +75,9 @@
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Spatial, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Spatial.5.6.0\lib\net40\System.Spatial.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -80,6 +89,9 @@
     </Reference>
     <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.OData, Version=5.3.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.OData.5.3.1\lib\net45\System.Web.Http.OData.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
@@ -117,6 +129,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="API\JoinAPIController.cs" />
+    <Compile Include="API\RouteController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -124,10 +137,29 @@
     <Compile Include="Controllers\GridController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JoinController.cs" />
+    <Compile Include="Controllers\RouteController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\LowTemperatureModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LowTemperatureModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LowTemperatureModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LowTemperatureModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LowTemperatureModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LowTemperatureModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\OrderViewModel.cs" />
+    <Compile Include="Models\Route.cs">
+      <DependentUpon>LowTemperatureModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\test1.cs">
       <DependentUpon>TestModel.tt</DependentUpon>
     </Compile>
@@ -491,8 +523,25 @@
       <LastGenOutput>TestModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <Content Include="Images\Logo_嘉里大榮.png" />
+    <Content Include="Models\LowTemperatureModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LowTemperatureModel.edmx</DependentUpon>
+      <LastGenOutput>LowTemperatureModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\LowTemperatureModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LowTemperatureModel.edmx</DependentUpon>
+      <LastGenOutput>LowTemperatureModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Models\TestModel.edmx.diagram">
       <DependentUpon>TestModel.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\LowTemperatureModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>LowTemperatureModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\LowTemperatureModel.edmx.diagram">
+      <DependentUpon>LowTemperatureModel.edmx</DependentUpon>
     </Content>
     <None Include="packages.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -775,6 +824,7 @@
     <Content Include="Scripts\kendo\2015.1.429\kendo.web.min.js.map" />
     <Content Include="Scripts\kendo\2015.1.429\kendo.window.min.js.map" />
     <Content Include="Views\Join\Index.cshtml" />
+    <Content Include="Views\Route\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Site.css" />

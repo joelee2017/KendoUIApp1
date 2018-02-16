@@ -72,7 +72,7 @@ namespace KendoUIApp1.API
             {
                 ID = Test.ID,
                 name = Test.name,
-                dept = Test.dept
+                dept = Test.dept                
             };
             db.test1.Add(entity);
             db.SaveChanges();
